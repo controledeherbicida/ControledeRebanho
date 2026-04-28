@@ -2144,6 +2144,14 @@ function renderLotes(data){
       </td>
     </tr>`;
   }).join('');
+  const totalCab  = data.reduce((s,l)=>s+(l.cab||0),0);
+  const totalMeta = data.reduce((s,l)=>s+(l.meta||0),0);
+  tbody.innerHTML += `<tr style="background:var(--verde);border-top:2px solid var(--ouro)">
+    <td colspan="3" style="padding:10px 12px;font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--ouro)">Total Geral · ${data.length} lotes · ${new Date().toLocaleDateString('pt-BR')}</td>
+    <td class="mono text-center" style="font-size:18px;font-weight:700;color:var(--ouro);padding:10px 12px">${totalCab}</td>
+    <td class="mono text-center" style="font-size:14px;color:var(--ouro2);padding:10px 12px">${totalMeta}</td>
+    <td colspan="4" style="padding:10px 12px;font-size:10px;color:var(--ouro3)">cabeças auditadas ✓</td>
+  </tr>`;
 }
 
 function renderAnimais(data){
